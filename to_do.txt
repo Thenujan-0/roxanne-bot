@@ -1,0 +1,7 @@
+improve logging by adding trace back
+
+add air kiss
+
+fix my_reminders which doesnt show the id in a aproper way now
+
+

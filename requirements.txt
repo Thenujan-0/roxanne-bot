@@ -1,0 +1,11 @@
+python-telegram-bot==12.7
+BeautifulSoup4
+requests==2.25.1
+lxml
+selenium
+sqlalchemy
+tzlocal
+pytz
+python-dateutil
+psycopg2
+youtube-dl
