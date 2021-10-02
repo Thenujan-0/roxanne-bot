@@ -1,14 +1,10 @@
-from __future__ import unicode_literals
-from sqlite3.dbapi2 import apilevel
-from sqlalchemy.sql.expression import null
-from sqlalchemy.sql.functions import user
-import youtube_dl
-from re import A
-from typing import final
+# from __future__ import unicode_literals
+
+
 from telegram.ext import *
 import responses as res
 import os
-import sqlite3
+
 import logging
 from bs4 import BeautifulSoup
 import requests
@@ -20,20 +16,19 @@ from selenium.common.exceptions import TimeoutException
 from sqlalchemy import create_engine , Integer,String,Column ,ForeignKey,BigInteger
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker ,relationship
-from sqlalchemy.orm import query
+
 import datetime
 from datetime import timedelta
-from datetime import tzinfo
-import pytz
-import tzlocal
+
+
 #import dateutil.tz
 import telegram
 import time
-import multiprocessing
+
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Updater, CommandHandler, CallbackQueryHandler
 from zoneinfo import ZoneInfo
-import concurrent.futures
+
 from datetime import datetime as dt
 from datetime import timedelta 
 import threading
@@ -457,6 +452,18 @@ def sender(id,):
         title = record.title
         bot.send_message(chat_id,title)
         if record.repeat=='':
+            
+            keyboard = [
+                        [InlineKeyboardButton("Yes", callback_data='reshedule')],
+                        [InlineKeyboardButton("No", callback_data='no_reshedule')],
+                    ]
+            reply_markup = InlineKeyboardMarkup(keyboard)
+            # print('inlinekeyboard_msgid_chatid'+str(message_id)+str(chat_id),str(user_id))
+            
+            # to_be_deleted=session.query(Data).filter(Data.name=='inlinekeyboard_msgid_chatid'+str(message_id)+str(chat_id)).first()
+            # session.delete(to_be_deleted)
+            message_reply_text = 'Do you want to reshedule this reminder '
+            resp =bot.send_message(text=message_reply_text,chat_id=chat_id,reply_markup=reply_markup)
             session.delete(record)
         else:
             reminder_time=record.time
@@ -466,7 +473,13 @@ def sender(id,):
         session.commit()
     else:
         bot.send_message(text='Sorry man i cant time travel because im afraid i might change the present ',chat_id=record.chat_id)
+        session.delete(record)
+        session.commit()
 
+
+
+
+        
 
 def start_all_reminders():
     reminders = session.query(Reminder)
@@ -673,7 +686,11 @@ def custom_date(update,context):
     
 def handle_message(update,context):
     message = str(update.message.text).lower()
+    msgid = update.message.message_id
     chat_id = get_chat_id(update,context)
+    print(msgid,chat_id)
+    # resp = bot.delete_message(chat_id, message_id =msgid,timeout =None)
+    # print(resp)
     user_id = get_user_id(update,context)
     # print(message)
     resp = res.respond(message,chat_id)
