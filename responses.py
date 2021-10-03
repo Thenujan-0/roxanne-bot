@@ -38,7 +38,10 @@ def respond(input_text,chat_id):
         return 'the guy who made me forgot to give me a name'
              
     for sentence in love:
-        if msg.count(sentence)>0 and msg.count('sunny')>0 :
+        if int(chat_id) <0 and msg.count(sentence)>0 and msg.count('sunny')>0 :
             
             bot.sendPhoto(photo='https://advicesacademy.com/wp-content/uploads/2015/10/Sunny-Leone-Kiss.jpg?_gl=1*1v74y7a*_ga*YW1wLUlGXzlHSF8xMm1GT2R4UE5VUjA1TkE.',chat_id=chat_id)
             return random.choice(love)
+        elif int(chat_id) <0 and msg.count(sentence)>0 :
+            return random.choice(love) + '❤️'
+            
