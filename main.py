@@ -1,13 +1,18 @@
-# from __future__ import unicode_literals
+#!/usr/bin/env python3
+
+
 
 
 from telegram.ext import *
-import responses as res
-import os
 
+
+import responses as res
+
+import os
 import logging
 from bs4 import BeautifulSoup
 import requests
+
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -17,6 +22,7 @@ from sqlalchemy import create_engine , Integer,String,Column ,ForeignKey,BigInte
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker ,relationship
 
+    
 import datetime
 from datetime import timedelta
 
@@ -34,10 +40,11 @@ from datetime import timedelta
 import threading
 
 
-logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+if __name__ == '__main__':
+    logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     level=logging.INFO)
 
-logger = logging.getLogger(__name__)
+    logger = logging.getLogger(__name__)
 
 bff= '-1001205686057'
 temp = '-563465499'
@@ -711,8 +718,12 @@ def handle_message(update,context):
     if not waiter and resp is not None:
         update.message.reply_text(resp)
 
-def error(update,context):
-    logger.warning('Update "%s" caused error "%s"', update, context.error)
+def error(update,context):  
+    try:
+        logger.warning('Update "%s" caused error "%s"', update, context.error)
+    except Exception as e:
+        print(str(e))
+        logging.debug('Update "%s" caused error "%s"', update, context.error)
 
 
 
