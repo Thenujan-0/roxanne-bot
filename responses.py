@@ -5,17 +5,9 @@ import os
 import telegram
 API_KEY = os.environ.get('API_KEY_ROXANNE')
 
-import gi
-gi.require_version('Notify','0.7')
 
-from gi.repository import Notify
 
-Notify.init('roxanne')
 
-def notifier(msg):
-    temp_noti=Notify.Notification.new(msg)
-    temp_noti.set_urgency(1)
-    temp_noti.show()
 
 
 
