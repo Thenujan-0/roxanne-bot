@@ -241,9 +241,9 @@ def range_fac(n1,n2):
         var-=1
     return fac
 
-
-def tellThenujan():
-    bot.send_message('1185281888','Bot started from heroku 😎')
+if __name__ == '__main__':
+    def tellThenujan():
+        bot.send_message('1185281888','Bot started from heroku 😎')
     
 
 def find_ncr(n,r):
