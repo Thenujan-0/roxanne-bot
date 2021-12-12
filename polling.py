@@ -38,7 +38,9 @@ logging.info('started')
 
 
 
-subprocess.Popen(['heroku maintenance:on -a roxanne-bot'],shell=True)
+out=subprocess.check_output(['heroku maintenance:on -a roxanne-bot'],shell=True).decode()
+
+logging.debug(out)
 
     # random_number = str(random())
     # keyboard = [heroku maintenance:on -a roxanne-bot

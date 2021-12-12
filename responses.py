@@ -17,7 +17,7 @@ temp = '-563465499'
 
 
 
-fuck =('fuck','fuck you','fuck yourself','fuck off')
+fuck =('fuck','fuck you','fuck yourself','fuck off','🖕')
 
 love = ('love you','i love you','i love you too','love you  too','love you so much','i love you more')
 

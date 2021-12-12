@@ -242,6 +242,10 @@ def range_fac(n1,n2):
     return fac
 
 
+def tellThenujan():
+    bot.send_message('1185281888','Bot started from heroku 😎')
+    
+
 def find_ncr(n,r):
     if n/2 >r:
         if r <100:
@@ -794,6 +798,7 @@ thenu=1185281888
 
 start_all_reminders()
 
+tellThenujan()
 
 
 
