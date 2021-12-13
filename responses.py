@@ -87,7 +87,8 @@ def respond(input_text,chat_id):
             
             if input_text in hate:
                 return random.choice(hate_reply)
-            
+            if '@roxanne_telebot' ==input_text:
+                return 'Yes sir \n or madam or whatever you are'
             return random.choice(unknown)
             
     return find_reply(input_text,chat_id)
