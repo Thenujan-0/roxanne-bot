@@ -21,7 +21,10 @@ fuck =('fuck','fuck you','fuck yourself','fuck off','🖕')
 
 love = ('love you','i love you','i love you too','love you  too','love you so much','i love you more')
 
+hate=('i hate you','i hate you sunny','i hate you so much sunny')
+hate_reply=('I though we had feelings for each other 🥀','😭','You are hurting my feelings 😭')
 hi=('hi','hello','hey there','whatsup','hey','hii')
+
 unknown = ('I wonder what that means 🤔',
            'I dont understand human language very well',
            'Can you please speak in binary so that i can understand',
@@ -62,6 +65,21 @@ def respond(input_text,chat_id):
                 return random.choice(love)+ '❤️'+ '❤️'
             elif msg.count(sentence)>0 :
                 return random.choice(love) + '❤️'
-        if int(chat_id) >0:
+            
+        text_in_binary = True
+        
+        for i in range(len(input_text)):
+            if not input_text[i] in ('1','0'):
+                text_in_binary = False
+                break
+        
+        if int(chat_id) <0 :
+            if text_in_binary:
+                return ('Thank you so much for the binary.But it just doesnt make much sense to me 🤔😥')
+            
+            if input_text in hate:
+                return random.choice(hate_reply)
+            
             return random.choice(unknown)
+            
     return find_reply(input_text,chat_id)
