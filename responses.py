@@ -22,6 +22,13 @@ fuck =('fuck','fuck you','fuck yourself','fuck off','🖕')
 love = ('love you','i love you','i love you too','love you  too','love you so much','i love you more')
 
 hi=('hi','hello','hey there','whatsup','hey','hii')
+unknown = ('I wonder what that means 🤔',
+           'I dont understand human language very well',
+           'Can you please speak in binary so that i can understand',
+           'Umm I\'m having a hard time understanding you ',
+           'I only know few words in human language . 😅 Sorry',
+           'It completely went over my head . Can you repeat the same in binary so that i can understand',
+            )
 
 def respond(input_text,chat_id):
     print('sending response')
@@ -55,4 +62,6 @@ def respond(input_text,chat_id):
                 return random.choice(love)+ '❤️'+ '❤️'
             elif msg.count(sentence)>0 :
                 return random.choice(love) + '❤️'
+        
+        return random.choice(unknown)
     return find_reply(input_text,chat_id)
