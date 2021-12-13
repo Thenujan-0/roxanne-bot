@@ -62,6 +62,6 @@ def respond(input_text,chat_id):
                 return random.choice(love)+ '❤️'+ '❤️'
             elif msg.count(sentence)>0 :
                 return random.choice(love) + '❤️'
-        
-        return random.choice(unknown)
+        if int(chat_id) >0:
+            return random.choice(unknown)
     return find_reply(input_text,chat_id)
