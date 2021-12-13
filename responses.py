@@ -15,7 +15,7 @@ bot = telegram.Bot(API_KEY)
 bff= '-1001205686057'
 temp = '-563465499'
 
-
+names=('sunny','leone','@roxanne_telebot')
 
 fuck =('fuck','fuck you','fuck yourself','fuck off','🖕')
 
@@ -67,13 +67,21 @@ def respond(input_text,chat_id):
                 return random.choice(love) + '❤️'
             
         text_in_binary = True
+        called_me=False
         
+        #check if it is binary input
         for i in range(len(input_text)):
             if not input_text[i] in ('1','0'):
                 text_in_binary = False
                 break
         
-        if int(chat_id) <0 :
+        
+        #check if sunny was mentioned
+        for i in range(len(names)):
+            if names[i] in input_text:
+                called_me=True
+        
+        if int(chat_id) <0 or called_me:
             if text_in_binary:
                 return ('Thank you so much for the binary.But it just doesnt make much sense to me 🤔😥')
             
