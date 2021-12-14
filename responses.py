@@ -13,7 +13,6 @@ API_KEY = os.environ.get('API_KEY_ROXANNE')
 
 bot = telegram.Bot(API_KEY)
 bff= '-1001205686057'
-temp = '-563465499'
 
 names=('sunny','leone','@roxanne_telebot')
 
@@ -81,7 +80,7 @@ def respond(input_text,chat_id):
             if names[i] in input_text:
                 called_me=True
         
-        if int(chat_id) <0 or called_me:
+        if int(chat_id) >0 or called_me:
             if text_in_binary:
                 return ('Thank you so much for the binary.But it just doesnt make much sense to me 🤔😥')
             
