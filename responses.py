@@ -14,7 +14,7 @@ API_KEY = os.environ.get('API_KEY_ROXANNE')
 bot = telegram.Bot(API_KEY)
 bff= '-1001205686057'
 
-names=('sunny','leone','@roxanne_telebot')
+names=('@sunny','@leone','@roxanne_telebot','@sunny_leone')
 
 fuck =('fuck','fuck you','fuck yourself','fuck off','🖕')
 
@@ -84,10 +84,10 @@ def respond(input_text,chat_id):
             if text_in_binary:
                 return ('Thank you so much for the binary.But it just doesnt make much sense to me 🤔😥')
             
+            
             if input_text in hate:
                 return random.choice(hate_reply)
-            if '@roxanne_telebot' ==input_text:
-                return 'Yes sir \n or madam or whatever you are'
-            return random.choice(unknown)
+
+            return random.choice(['Yes','I\'m here'])
             
     return find_reply(input_text,chat_id)

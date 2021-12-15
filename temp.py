@@ -1,3 +1,2 @@
-from datetime import datetime as dt
-
-print(dt.now())
+import requests
+requests.get('https://roxanne-bot.herokuapp.com')

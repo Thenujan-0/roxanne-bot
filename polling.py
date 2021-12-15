@@ -28,7 +28,7 @@ sleep(10)
 HOME = os.getenv('HOME')
 
 
-logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',filename='/home/thenujan/roxanne.log',
+logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',filename=f'{HOME}/roxanne.log',
                     level=logging.DEBUG,)
 
 
@@ -72,7 +72,7 @@ print(dt.now(ZoneInfo('Asia/Colombo')))
 
 
 
-updater.start_polling()
+updater.start_polling(poll_interval=1.0 ,timeout=20)
 updater.idle()
 
 
